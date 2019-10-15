@@ -10,3 +10,13 @@ app.set('port', process.env.PORT || 4000);//utilizo un puerto asignado o sino el
 app.use(morgan('dev'));
 
 //Global
+//routes
+//public
+
+
+
+
+//starting the server
+app.listen(app.get('port'), () => {
+    console.log('server on port',app.get('port'));
+});
