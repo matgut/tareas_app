@@ -4,7 +4,7 @@
   "description": "app para guardar tareas de uso diario",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon src/index"
+    "dev": "nodemon source/"
   },
   "repository": {
     "type": "git",
@@ -20,11 +20,13 @@
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "connect-flash": "^0.1.1",
+    "dateformat": "^3.0.3",
     "express": "^4.17.1",
     "express-handlebars": "^3.1.0",
     "express-mysql-session": "^2.1.0",
     "express-session": "^1.17.0",
     "express-validator": "^6.2.0",
+    "handlebars": "^4.4.3",
     "morgan": "^1.9.1",
     "mysql": "^2.17.1",
     "passport": "^0.4.0",

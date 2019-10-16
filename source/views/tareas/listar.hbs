@@ -1,0 +1,40 @@
+<div class="container p-4">
+    <div class="row">
+        {{#each tareas}}
+        <div class="col-md-4">
+            <div class="card text-white bg-dark mb-3" style="max-width: 400px;">
+                <div class="card-header text-center"> <h5 class="card-title">{{name_task}}</h5></div>
+                <div class="card-body">
+                    <form>
+                        <div class="form-group">
+                            {{#switch  status_task}}
+                            {{#case "Iniciado"}} <h4 class="card-title text-center"><span class="badge badge-pill badge-primary">{{status_task}}</span></h4> {{/case}}
+                            {{#case "Desarrollo"}} <h4 class="card-title text-center"><span class="badge badge-pill badge-warning">{{status_task}}</span></h4> {{/case}}
+                            {{#case "Finalizado"}} <h4 class="card-title text-center"><span class="badge badge-pill badge-danger">{{status_task}}</span></h4> {{/case}}
+                        {{/switch}}
+                        </div>
+                        <div class="form-group">
+                            <h5>Descripción:</h5>
+                            <label for="">{{descrip_task}}</label>
+                        </div>
+                    </form>
+                </div>
+                <div class="card-footer">
+                    <a href="/tarea/eliminar/{{id}}" class="mt-auto btn btn-md btn-block btn-danger">Eliminar</a><br>
+                    <a href="/tarea/editar/{{id}}" class="mt-auto btn btn-md btn-block btn-info">Editar</a>
+                </div>
+
+            </div>
+        </div>
+        {{else}}
+            <div class="col md-5 mx-auto">
+                <div class="text-center">
+                    <div class="alert alert-dismissible alert-warning">
+                        <h4 class="alert-heading">No hay Tareas Registradas!</h4>
+                        <p class="mb-0"><a href="/tarea/agregar" class="alert-link">Crea uno Aqui</a>.</p>
+                    </div>
+                </div>
+            </div>
+        {{/each}}
+    </div>
+</div>
