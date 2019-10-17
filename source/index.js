@@ -2,6 +2,10 @@ const express = require('express');
 const morgan = require('morgan');
 const exphbs  = require('express-handlebars');
 const path = require('path');
+const flash = require('connect-flash');
+const session = require('express-session');
+const mysqlstore = require('express-mysql-session');
+const { database } = require('./keys');
 
 
 //init
@@ -20,12 +24,20 @@ app.engine('.hbs', exphbs({
 app.set('view engine', '.hbs');
 
 //middlewares
+app.use(session({
+    secret: 'mySesion',
+    resave: false,
+    saveUninitialized: false,
+    store: new mysqlstore(database)
+}));
 app.use(morgan('dev'));
 app.use(express.urlencoded({extended: false}));//solo se aceptan nombres o textos, no imagenes
 app.use(express.json());
+app.use(flash());
 
 //Global
 app.use((req, res, next) => {
+    app.locals.success = req.flash('success');
     next();
 });
 
